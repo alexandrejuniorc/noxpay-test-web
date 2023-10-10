@@ -29,6 +29,8 @@ export const TableCryptosHook = () => {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = useState({});
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 4;
 
   const {
     data: crypto,
@@ -36,8 +38,8 @@ export const TableCryptosHook = () => {
     error,
     refetch,
   } = useQuery({
-    queryKey: ["get-all-cryptos"],
-    queryFn: getAllCriptos,
+    queryKey: ["get-all-cryptos", { currentPage }],
+    queryFn: () => getAllCriptos(currentPage, itemsPerPage),
   });
 
   const voteOnCrypto = async (id: string) => {
@@ -131,7 +133,7 @@ export const TableCryptosHook = () => {
   ];
 
   const table = useReactTable({
-    data: crypto ?? [],
+    data: crypto?.results ?? [],
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -161,5 +163,7 @@ export const TableCryptosHook = () => {
     error,
     refetch,
     voteOnCrypto,
+    currentPage,
+    setCurrentPage,
   };
 };
