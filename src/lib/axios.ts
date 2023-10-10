@@ -1,6 +1,8 @@
 import axios from "axios";
 
-export const api = axios.create({ baseURL: process.env.NEXT_PUBLIC_BASE_URL });
+export const api = axios.create({
+  baseURL: process.env.DATABASE_URL || "https://noxpay.onrender.com",
+});
 
 type Cripto = {
   id: string;
