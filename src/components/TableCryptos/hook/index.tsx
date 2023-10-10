@@ -125,7 +125,7 @@ export const TableCryptosHook = () => {
             <Heart
               onClick={() => voteOnCrypto(cryptoId)}
               style={{ cursor: "pointer" }}
-              size={48}
+              size={24}
               color="#ff0000"
               strokeWidth={3}
               absoluteStrokeWidth
