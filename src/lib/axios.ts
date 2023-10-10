@@ -12,6 +12,9 @@ export const createNewCripto = async (data: any) => {
 };
 export const updateVoteCripto = async (id: string) => {
   return await api
-    .put(`/cryptocurrency/${id}/vote`)
+    .put(`/cryptocurrency/${id}/vote`, {
+      id,
+      vote: 1
+    })
     .then((response) => response.data);
 };
