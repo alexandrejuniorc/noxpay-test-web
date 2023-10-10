@@ -1,4 +1,5 @@
 import { Github, Linkedin } from "lucide-react";
+import Link from "next/link";
 
 export const Footer = () => {
   return (
@@ -8,16 +9,22 @@ export const Footer = () => {
           <p>&copy; 2022 NoxPay. All rights reserved.</p>
 
           <div className="flex justify-center space-x-6 mt-2">
-            <Github
-              href="https://github.com/alexandrejuniorc"
-              color="#ffffff"
-              className="hover:bg-blue-500 hover:text-white rounded cursor-pointer"
-            />
-            <Linkedin
-              href="https://www.linkedin.com/in/alexandrejuniorc/"
-              color="#ffffff"
-              className="hover:bg-blue-500 hover:text-white rounded cursor-pointer"
-            />
+            <Link href={"https://github.com/alexandrejuniorc"} target="_blank">
+              <Github
+                color="#ffffff"
+                className="hover:bg-blue-500 hover:text-white rounded cursor-pointer"
+              />
+            </Link>
+
+            <Link
+              href={"https://www.linkedin.com/in/alexandrejuniorc/"}
+              target="_blank"
+            >
+              <Linkedin
+                color="#ffffff"
+                className="hover:bg-blue-500 hover:text-white rounded cursor-pointer"
+              />
+            </Link>
           </div>
         </div>
       </div>
