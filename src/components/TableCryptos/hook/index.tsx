@@ -1,15 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { getAllCriptos, updateVoteCripto } from "@/lib/axios";
-import { CaretSortIcon, DotsHorizontalIcon } from "@radix-ui/react-icons";
+import { CaretSortIcon } from "@radix-ui/react-icons";
 import { useQuery } from "@tanstack/react-query";
 import {
   ColumnDef,
@@ -115,8 +107,9 @@ export const TableCryptosHook = () => {
       ),
     },
     {
-      id: "actions",
+      id: "vote",
       enableHiding: false,
+      header: "Vote",
       cell: ({ row }) => {
         const cryptoId = row.original.id;
 
@@ -131,27 +124,6 @@ export const TableCryptosHook = () => {
               absoluteStrokeWidth
               className="transition-colors hover:fill-red-600 hover:stroke-red-600"
             />
-
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="h-8 w-8 p-0">
-                  <span className="sr-only">Open menu</span>
-                  <DotsHorizontalIcon className="h-4 w-4" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                <DropdownMenuItem
-                  onClick={() => navigator.clipboard.writeText(cryptoId)}
-                >
-                  Copy crypto ID
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => voteOnCrypto(cryptoId)}>
-                  Vote to favorite crypto
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
           </div>
         );
       },
