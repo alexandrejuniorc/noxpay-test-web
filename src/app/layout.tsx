@@ -1,8 +1,8 @@
 "use client";
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Poppins } from "next/font/google";
+import { Footer } from "../components/Footer";
+import { Header } from "../components/Header";
 import "./globals.css";
 
 const poppins = Poppins({ weight: "400", subsets: ["latin"] });
